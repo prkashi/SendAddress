@@ -39,12 +39,16 @@ public class GetPhone extends AppCompatActivity {
                 wp = brotherphone.getText().toString();
                 hp = brotherphone.getText().toString();
                 op = brotherphone.getText().toString();
-
+               // db.addContact(new Contact("Other", op));
+                //db.addContact(new Contact("Father", fp));
+               // db.addContact(new Contact("Mother", mp));
+               // db.addContact(new Contact("Sister", sp));
+               // db.addContact(new Contact("Brother", bp));
+               // db.addContact(new Contact("Wife", wp));
+               // db.addContact(new Contact("Husband", hp));
                 Log.d("Insert: ", "Inserting ..");
-               // db.addContact(new Contact("Father", fp));
-                //db.addContact(new Contact("Mother", mp));
-                //db.addContact(new Contact("Sister", sp));
-                //db.addContact(new Contact("Brother", bp));
+              // db.deleteAll(new Contact());
+
 
                 //db.deleteContact(new Contact(4,"Father",fp));
 

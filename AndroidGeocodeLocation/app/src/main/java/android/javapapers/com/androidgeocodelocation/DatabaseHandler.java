@@ -133,7 +133,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 new String[] { String.valueOf(contact.getID()) });
         db.close();
     }
-
+public void deleteAll(Contact contact){
+    SQLiteDatabase db = this.getWritableDatabase();
+    db.delete(TABLE_CONTACTS,null,null);
+}
 
     // Getting contacts Count
     public int getContactsCount() {

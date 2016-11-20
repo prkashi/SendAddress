@@ -35,7 +35,6 @@ public class MyActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
-
         appLocationService = new AppLocationService(
                 MyActivity.this);
         btnShowAddress = (Button) findViewById(R.id.father);
