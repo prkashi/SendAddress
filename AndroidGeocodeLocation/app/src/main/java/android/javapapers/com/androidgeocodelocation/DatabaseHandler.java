@@ -141,12 +141,14 @@ public void deleteAll(Contact contact){
     // Getting contacts Count
     public int getContactsCount() {
         String countQuery = "SELECT  * FROM " + TABLE_CONTACTS;
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(countQuery, null);
+        SQLiteDatabase db1 = this.getReadableDatabase();
+        Cursor cursor = db1.rawQuery(countQuery, null);
+        int n;
+        n= cursor.getCount();
         cursor.close();
 
         // return count
-        return cursor.getCount();
+        return n;
     }
 
 }

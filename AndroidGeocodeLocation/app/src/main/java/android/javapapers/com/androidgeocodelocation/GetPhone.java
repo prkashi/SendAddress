@@ -1,5 +1,7 @@
 package android.javapapers.com.androidgeocodelocation;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -39,16 +41,56 @@ public class GetPhone extends AppCompatActivity {
                 wp = brotherphone.getText().toString();
                 hp = brotherphone.getText().toString();
                 op = brotherphone.getText().toString();
-               // db.addContact(new Contact("Other", op));
-                //db.addContact(new Contact("Father", fp));
-               // db.addContact(new Contact("Mother", mp));
-               // db.addContact(new Contact("Sister", sp));
-               // db.addContact(new Contact("Brother", bp));
-               // db.addContact(new Contact("Wife", wp));
-               // db.addContact(new Contact("Husband", hp));
-                Log.d("Insert: ", "Inserting ..");
-              // db.deleteAll(new Contact());
 
+                if(db.getContactsCount()==0) {
+                    db.addContact(new Contact("Father", fp));
+                    db.addContact(new Contact("Mother", mp));
+                    db.addContact(new Contact("Sister", sp));
+                    db.addContact(new Contact("Brother", bp));
+                    db.addContact(new Contact("Wife", wp));
+                    db.addContact(new Contact("Husband", hp));
+                    db.addContact(new Contact("Other", op));
+                    Log.d("Insert: ", "Inserting ..");
+                }
+              // db.deleteAll(new Contact());
+                       else{
+                    if(db.getContact(1)== null)
+                        db.addContact(new Contact("Father", fp));
+                    else{
+                        db.updateContact(new Contact(1,"Father",fp));
+                    }
+                    if(db.getContact(2)==null)
+                        db.addContact(new Contact("Mother", mp));
+                    else{
+                        db.updateContact(new Contact(2,"Mother",mp));
+                    }
+                    if(db.getContact(3)==null)
+                        db.addContact(new Contact("Sister", sp));
+                    else{
+                        db.updateContact(new Contact(3,"Sister",sp));
+                    }
+                    if(db.getContact(4)==null)
+                        db.addContact(new Contact("Brother", bp));
+                    else{
+                        db.updateContact(new Contact(4,"Brother",bp));
+                    }
+                    if(db.getContact(5)==null)
+                        db.addContact(new Contact("Wife", wp));
+                    else{
+                        db.updateContact(new Contact(5,"Wife",wp));
+                    }
+                    if(db.getContact(6)==null)
+                        db.addContact(new Contact("Husband", hp));
+                    else{
+                        db.updateContact(new Contact(6,"Husband",hp));
+                    }
+                    if(db.getContact(7)==null)
+                        db.addContact(new Contact("Other", op));
+                    else{
+                        db.updateContact(new Contact(7,"Other",op));
+                    }
+
+                }
 
                 //db.deleteContact(new Contact(4,"Father",fp));
 
