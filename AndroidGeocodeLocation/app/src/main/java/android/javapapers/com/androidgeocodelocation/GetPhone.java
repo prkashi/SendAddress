@@ -44,17 +44,17 @@ public class GetPhone extends AppCompatActivity {
                 op = brotherphone.getText().toString();
 
                 if(db.getContactsCount()==0) {
-                    db.addContact(new Contact("Father", fp));
-                    db.addContact(new Contact("Mother", mp));
-                    db.addContact(new Contact("Sister", sp));
-                    db.addContact(new Contact("Brother", bp));
-                    db.addContact(new Contact("Wife", wp));
-                    db.addContact(new Contact("Husband", hp));
-                    db.addContact(new Contact("Other", op));
+                    db.addContact(new Contact("Father", null));
+                    db.addContact(new Contact("Mother", null));
+                    db.addContact(new Contact("Sister", null));
+                    db.addContact(new Contact("Brother", null));
+                    db.addContact(new Contact("Wife", null));
+                    db.addContact(new Contact("Husband", null));
+                    db.addContact(new Contact("Other", null));
                     Log.d("Insert: ", "Inserting ..");
                 }
               // db.deleteAll(new Contact());
-                       else{
+                         else{
                     if(db.getContact(1)== null)
                         db.addContact(new Contact("Father", fp));
                     else{
@@ -94,7 +94,7 @@ public class GetPhone extends AppCompatActivity {
                 }
 
                 //db.deleteContact(new Contact(4,"Father",fp));
-
+                db.deleteAll(new Contact());
 
 
 
