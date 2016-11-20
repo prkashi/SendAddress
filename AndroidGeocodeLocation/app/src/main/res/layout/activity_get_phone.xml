@@ -84,7 +84,8 @@
             android:text="Entered Already"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/entered" />
+            android:id="@+id/entered"
+            android:onClick="destLogin"/>
 
     </LinearLayout>
 </RelativeLayout>

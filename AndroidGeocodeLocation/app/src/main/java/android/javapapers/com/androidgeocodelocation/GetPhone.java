@@ -1,5 +1,6 @@
 package android.javapapers.com.androidgeocodelocation;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
@@ -108,5 +109,10 @@ public class GetPhone extends AppCompatActivity {
             }
             });
 
+    }
+    public void destLogin(View view) {
+        // Do something in response to button
+        Intent intent = new Intent(this, MyActivity.class);
+        startActivity(intent);
     }
 }

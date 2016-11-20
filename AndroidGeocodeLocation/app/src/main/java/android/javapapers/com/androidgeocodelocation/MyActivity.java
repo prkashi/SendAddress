@@ -24,10 +24,14 @@ public class MyActivity extends Activity {
     String locationAddress;
     Button btnGPSShowLocation;    Button btnShowAddress;    TextView tvAddress;
 
-
-    Button mother;
-    Button sister;
-    Button wife;
+    DatabaseHandler db = new DatabaseHandler(this);
+    Button mothers;
+    Button sisters;
+    Button wifes;
+    Button fathers;
+    Button brothers;
+    Button husbands;
+    Button others;
 
     AppLocationService appLocationService;
 
@@ -37,11 +41,14 @@ public class MyActivity extends Activity {
         setContentView(R.layout.activity_my);
         appLocationService = new AppLocationService(
                 MyActivity.this);
-        btnShowAddress = (Button) findViewById(R.id.father);
-        mother = (Button) findViewById(R.id.mother) ;
-        sister = (Button) findViewById(R.id.sister) ;
-        wife = (Button) findViewById(R.id.wife) ;
-        btnShowAddress.setOnClickListener(new View.OnClickListener() {
+        fathers = (Button) findViewById(R.id.father);
+        brothers = (Button) findViewById(R.id.brother);
+        others = (Button) findViewById(R.id.button13);
+        husbands = (Button) findViewById(R.id.husband);
+        mothers= (Button) findViewById(R.id.mother) ;
+        sisters = (Button) findViewById(R.id.sister) ;
+        wifes = (Button) findViewById(R.id.wife) ;
+        fathers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
 
@@ -67,7 +74,7 @@ public class MyActivity extends Activity {
             }
         }
  );
-        mother.setOnClickListener(new View.OnClickListener() {
+        mothers.setOnClickListener(new View.OnClickListener() {
                                               @Override
                                               public void onClick(View arg0) {
 
@@ -93,7 +100,7 @@ public class MyActivity extends Activity {
                                               }
                                           }
         );
-        sister.setOnClickListener(new View.OnClickListener() {
+        sisters.setOnClickListener(new View.OnClickListener() {
                                               @Override
                                               public void onClick(View arg0) {
 
@@ -119,7 +126,7 @@ public class MyActivity extends Activity {
                                               }
                                           }
         );
-        wife.setOnClickListener(new View.OnClickListener() {
+        wifes.setOnClickListener(new View.OnClickListener() {
                                               @Override
                                               public void onClick(View arg0) {
 
@@ -145,9 +152,110 @@ public class MyActivity extends Activity {
                                               }
                                           }
         );
+        fathers.setOnClickListener(new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View arg0) {
 
+                                          Location location = appLocationService
+                                                  .getLocation(LocationManager.GPS_PROVIDER);
 
+                                          //you can hard-code the lat & long if you have issues with getting it
+                                          //remove the below if-condition and use the following couple of lines
+                                          //double latitude = 37.422005;
+                                          //double longitude = -122.084095
 
+                                          if (location != null) {
+                                              double latitude = location.getLatitude();
+                                              double longitude = location.getLongitude();
+                                              LocationAddress locationAddress = new LocationAddress();
+                                              locationAddress.getAddressFromLocation(latitude, longitude,
+                                                      getApplicationContext(), new GeocoderHandler());
+
+                                          } else {
+                                              showSettingsAlert();
+                                          }
+
+                                      }
+                                  }
+        );
+        brothers.setOnClickListener(new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View arg0) {
+
+                                          Location location = appLocationService
+                                                  .getLocation(LocationManager.GPS_PROVIDER);
+
+                                          //you can hard-code the lat & long if you have issues with getting it
+                                          //remove the below if-condition and use the following couple of lines
+                                          //double latitude = 37.422005;
+                                          //double longitude = -122.084095
+
+                                          if (location != null) {
+                                              double latitude = location.getLatitude();
+                                              double longitude = location.getLongitude();
+                                              LocationAddress locationAddress = new LocationAddress();
+                                              locationAddress.getAddressFromLocation(latitude, longitude,
+                                                      getApplicationContext(), new GeocoderHandler());
+
+                                          } else {
+                                              showSettingsAlert();
+                                          }
+
+                                      }
+                                  }
+        );
+        husbands.setOnClickListener(new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View arg0) {
+
+                                          Location location = appLocationService
+                                                  .getLocation(LocationManager.GPS_PROVIDER);
+
+                                          //you can hard-code the lat & long if you have issues with getting it
+                                          //remove the below if-condition and use the following couple of lines
+                                          //double latitude = 37.422005;
+                                          //double longitude = -122.084095
+
+                                          if (location != null) {
+                                              double latitude = location.getLatitude();
+                                              double longitude = location.getLongitude();
+                                              LocationAddress locationAddress = new LocationAddress();
+                                              locationAddress.getAddressFromLocation(latitude, longitude,
+                                                      getApplicationContext(), new GeocoderHandler());
+
+                                          } else {
+                                              showSettingsAlert();
+                                          }
+
+                                      }
+                                  }
+        );
+        others.setOnClickListener(new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View arg0) {
+
+                                          Location location = appLocationService
+                                                  .getLocation(LocationManager.GPS_PROVIDER);
+
+                                          //you can hard-code the lat & long if you have issues with getting it
+                                          //remove the below if-condition and use the following couple of lines
+                                          //double latitude = 37.422005;
+                                          //double longitude = -122.084095
+
+                                          if (location != null) {
+                                              double latitude = location.getLatitude();
+                                              double longitude = location.getLongitude();
+                                              LocationAddress locationAddress = new LocationAddress();
+                                              locationAddress.getAddressFromLocation(latitude, longitude,
+                                                      getApplicationContext(), new GeocoderHandler());
+
+                                          } else {
+                                              showSettingsAlert();
+                                          }
+
+                                      }
+                                  }
+        );
 
     }
 
@@ -191,11 +299,24 @@ public class MyActivity extends Activity {
     }
     private void sendSMS(String locationAddress)
     {
-
         PendingIntent sentPI = PendingIntent.getBroadcast(this, 0,
                 new Intent(), 0);
         SmsManager sms = SmsManager.getDefault();
-        sms.sendTextMessage("8622948420", null, locationAddress, sentPI, null);
+       if(wifes.getId()== R.id.wife)
+        sms.sendTextMessage(db.getContact(5).toString(), null, locationAddress, sentPI, null);
+        if(husbands.getId()== R.id.husband)
+            sms.sendTextMessage(db.getContact(6).toString(), null, locationAddress, sentPI, null);
+        if(fathers.getId()== R.id.father)
+            sms.sendTextMessage(db.getContact(1).toString(), null, locationAddress, sentPI, null);
+        if(brothers.getId()== R.id.brother)
+            sms.sendTextMessage(db.getContact(4).toString(), null, locationAddress, sentPI, null);
+        if(mothers.getId()== R.id.mother)
+            sms.sendTextMessage(db.getContact(2).toString(), null, locationAddress, sentPI, null);
+        if(others.getId()== R.id.button13)
+            sms.sendTextMessage(db.getContact(7).toString(), null, locationAddress, sentPI, null);
+        if(sisters.getId()== R.id.sister)
+            sms.sendTextMessage(db.getContact(3).toString(), null, locationAddress, sentPI, null);
+
     }
 
 }
