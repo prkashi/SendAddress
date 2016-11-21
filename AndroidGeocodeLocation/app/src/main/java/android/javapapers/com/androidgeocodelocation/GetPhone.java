@@ -100,7 +100,7 @@ public class GetPhone extends AppCompatActivity {
 
                 Log.d("Reading: ", "Reading all contacts..");
                 List<Contact> contacts = db.getAllContacts();
-//added a comment
+
                 for (Contact cn : contacts) {
                     String log = "Id: "+cn.getID()+" ,Name: " + cn.getName() + " ,Phone: " + cn.getPhoneNumber();
                     // Writing Contacts to log
