@@ -15,6 +15,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.provider.Settings;
 import android.telephony.SmsManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -302,8 +303,10 @@ public class MyActivity extends Activity {
         PendingIntent sentPI = PendingIntent.getBroadcast(this, 0,
                 new Intent(), 0);
         SmsManager sms = SmsManager.getDefault();
-       if(wifes.getId()== R.id.wife)
-        sms.sendTextMessage(db.getContact(5).toString(), null, locationAddress, sentPI, null);
+       if(wifes.getId()== R.id.wife) {
+           sms.sendTextMessage(db.getContact(5).toString(), null, locationAddress, sentPI, null);
+           //Log.d("check", db.getContact(5).toString());
+       }
         if(husbands.getId()== R.id.husband)
             sms.sendTextMessage(db.getContact(6).toString(), null, locationAddress, sentPI, null);
         if(fathers.getId()== R.id.father)

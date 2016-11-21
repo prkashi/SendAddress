@@ -14,6 +14,7 @@ import android.content.ContentValues;
         import android.database.Cursor;
         import android.database.sqlite.SQLiteDatabase;
         import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
 
@@ -83,6 +84,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             cursor.moveToFirst();
 
         Contact contact = new Contact(cursor.getString(2));
+        Log.d("error",cursor.getString(2));
         // return contact
         return contact;
     }

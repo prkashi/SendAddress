@@ -39,9 +39,9 @@ public class GetPhone extends AppCompatActivity {
                 bp = brotherphone.getText().toString();
                 fp = fatherphone.getText().toString();
                 bp = brotherphone.getText().toString();
-                wp = brotherphone.getText().toString();
-                hp = brotherphone.getText().toString();
-                op = brotherphone.getText().toString();
+                wp = wifephone.getText().toString();
+                hp = husbandphone.getText().toString();
+                op = othersphone.getText().toString();
 
                 if(db.getContactsCount()==0) {
                     db.addContact(new Contact("Father", null));
@@ -94,7 +94,7 @@ public class GetPhone extends AppCompatActivity {
                 }
 
                 //db.deleteContact(new Contact(4,"Father",fp));
-                db.deleteAll(new Contact());
+               // db.deleteAll(new Contact());
 
 
 
