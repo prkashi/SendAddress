@@ -8,7 +8,7 @@ import android.content.ContentValues;
 
         import java.util.ArrayList;
         import java.util.List;
-//test //test again
+//test
         import android.content.ContentValues;
         import android.content.Context;
         import android.database.Cursor;
